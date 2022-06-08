@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: serviceebusinessonline
+  name: serviceebusinessonline
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: serviceebusinessonline
+  template:
+    metadata:
+      labels:
+        app: serviceebusinessonline
+    spec:
+      containers:
+        - image: image-registry.openshift-image-registry.svc:5000/myproject/serviceebusinessonline:latest
+          imagePullPolicy: Always
+          name: serviceebusinessonline
+          ports:
+            - containerPort: 9080
+              protocol: TCP
